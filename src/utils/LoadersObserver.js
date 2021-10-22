@@ -4,6 +4,13 @@ class LoadersObserver {
     this.onLoad = null
   }
 
+  get progress() {
+    const total = this.loaders.length
+    const loadedLoaders = this.loaders.filter((loader) => loader.loaded).length
+
+    return loadedLoaders / total
+  }
+
   setOnLoad(onLoad) {
     this.onLoad = onLoad
   }
@@ -33,6 +40,8 @@ class LoadersObserver {
         loader.loaded = true
         this.checkIsDone()
       }
+
+      window.document.querySelector('#loading').innerHTML = `Ловдинг ${100 * this.progress}% ...`
     }
   }
 
