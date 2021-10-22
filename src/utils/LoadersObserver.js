@@ -34,14 +34,16 @@ class LoadersObserver {
     return (xhr) => {
       const loader = this.loaders.find((loader) => loader.id === id)
 
-      console.log(id, 'readyState', xhr.target.readyState)
+      setTimeout(() => {
+        console.log(id, 'readyState', xhr.target)
 
-      if (xhr.target.readyState === 4) {
-        loader.loaded = true
-        this.checkIsDone()
-      }
+        if (xhr.target.readyState === 4) {
+          loader.loaded = true
+          this.checkIsDone()
+        }
 
-      window.document.querySelector('#loading').innerHTML = `Ловдинг ${100 * this.progress}% ...`
+        window.document.querySelector('#loading').innerHTML = `Ловдинг ${100 * this.progress}% ...`
+      })
     }
   }
 
