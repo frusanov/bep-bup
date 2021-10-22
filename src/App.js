@@ -7,8 +7,10 @@ import { softShadows, BakeShadows, RoundedBox, Environment, useCursor, ContactSh
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { Text, CameraShake } from '@react-three/drei'
 
+const isProd = process.env.NODE_ENV === 'production'
+const uriPrefix = isProd ? '/bep-bup' : ''
 // Soft shadows are expensive, uncomment and refresh when it's too slow
-softShadows()
+// softShadows()
 
 function damp(target, to, step, delta, v = new THREE.Vector3()) {
   if (target instanceof THREE.Vector3) {
@@ -27,7 +29,7 @@ function Plane({ color, ...props }) {
 }
 
 function Pixie(props) {
-  const gltf = useLoader(GLTFLoader, '/models/pixie.gltf')
+  const gltf = useLoader(GLTFLoader, uriPrefix + '/models/pixie.gltf')
   const [rotata, setRotata] = useState(0)
 
   useEffect(() => {
@@ -49,7 +51,7 @@ function Pixie(props) {
 }
 
 function Pixie2(props) {
-  const gltf = useLoader(GLTFLoader, '/models/pixie.gltf?2')
+  const gltf = useLoader(GLTFLoader, uriPrefix + '/models/pixie.gltf?2')
 
   return (
     <mesh {...props}>
