@@ -74,9 +74,11 @@ function Hack() {
   })
 
   useEffect(() => {
-    setTimeout(() => {
-      set(false)
-    }, 1000)
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        set(false)
+      }, 1500)
+    })
   })
 
   return <></>
