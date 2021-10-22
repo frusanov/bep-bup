@@ -20,10 +20,30 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>Беп! Буп!</title>
+    <style>
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      #loading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: aliceblue;
+        z-index: 1;
+        transition: opacity 0.5s;
+      }
+    </style>
   </head>
 
   <body>
     <noscript> You need to enable JavaScript to run this app. </noscript>
+    <div id="loading">Ловдинг...</div>
     <div id="root"></div>
     <!--
       This HTML file is a template.
